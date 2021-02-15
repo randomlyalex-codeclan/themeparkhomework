@@ -40,13 +40,13 @@ public class ThemePark {
     public ArrayList<IReviewed> getAllAllowedForVisitor(Visitor visitor){
         ArrayList<IReviewed> allAllowed = new ArrayList<IReviewed>();
         for (IReviewed review :getAllReviewed()){
-
-            //Try if there isAllowed then check .isallowed(Visitor) == true then allAllowed.add(review);
-            //Exception means no isAllowed so allAllowed.add(review);
-
+            if (review.isAllowedTo(visitor) == false){
+            }
+            else allAllowed.add(review);
         }
         return allAllowed;
+            //Also considered not extending IReview with ISecurity and using something like the below (?) :
+            //Try if there isAllowed then check .isallowed(Visitor) == true then allAllowed.add(review);
+            //Exception means no isAllowed so allAllowed.add(review);
     }
-
-
 }
